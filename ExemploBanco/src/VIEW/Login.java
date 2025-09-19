@@ -116,8 +116,8 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
-        TelaPrincipal rincipal = new TelaPrincipal();
-        rincipal.setVisible(true);
+//        TelaPrincipal rincipal = new TelaPrincipal();;;
+//        rincipal.setVisible(true);
         String login = txtLogin.getText();
         String senha = txtSenha.getText();
         UsuarioDTO objUsuarioDTO = new UsuarioDTO();
