@@ -11,7 +11,6 @@ import javax.swing.*;
 public class Login extends javax.swing.JFrame {
 
     Connection conexao = null;
-    Cadastro cadastro = new Cadastro();
     
     public Login() {
          
@@ -23,14 +22,10 @@ public class Login extends javax.swing.JFrame {
                 Image img = iconeverde.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
                 lblImagem.setIcon(new ImageIcon(img));
                 
-                lblImagem.setText("Conexão mal sucedida!");
-                
             }else{
                 ImageIcon iconevermelho = new ImageIcon(getClass().getResource("/Imagens/certo.png"));
                 Image img = iconevermelho.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
                 lblImagem.setIcon(new ImageIcon(img));
-                
-                lblImagem.setText("Conexão bem sucedida!");
             }
         
     }
@@ -46,6 +41,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         lblImagem = new javax.swing.JLabel();
+        lblcadastrar = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -58,6 +54,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Senha:");
 
         btnLogin.setText("Login");
+        btnLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,31 +62,41 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        lblImagem.setText("...");
         lblImagem.setMaximumSize(new java.awt.Dimension(50, 50));
         lblImagem.setMinimumSize(new java.awt.Dimension(50, 50));
+
+        lblcadastrar.setText("Cadastre-se...");
+        lblcadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblcadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblcadastrarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3))
-                                .addGap(54, 54, 54)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(165, 165, 165)
+                                .addComponent(lblcadastrar)))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -104,10 +111,13 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLogin)
-                .addGap(8, 8, 8)
-                .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnLogin)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblcadastrar))
+                    .addComponent(lblImagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,7 +129,7 @@ public class Login extends javax.swing.JFrame {
 //        TelaPrincipal rincipal = new TelaPrincipal();;;
 //        rincipal.setVisible(true);
         String login = txtLogin.getText();
-        String senha = txtSenha.getText();
+        String senha = new String(txtSenha.getPassword());
         UsuarioDTO objUsuarioDTO = new UsuarioDTO();
         objUsuarioDTO.setLogin(login);
         objUsuarioDTO.setSenha(senha);
@@ -129,6 +139,12 @@ public class Login extends javax.swing.JFrame {
         objUsuarioDAO.logar(objUsuarioDTO);
        this.dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void lblcadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcadastrarMouseClicked
+        PrimeiroCadastro cadastro = new PrimeiroCadastro();
+        cadastro.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblcadastrarMouseClicked
 
     public static void main(String args[]) {
         
@@ -145,6 +161,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblImagem;
+    private javax.swing.JLabel lblcadastrar;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
